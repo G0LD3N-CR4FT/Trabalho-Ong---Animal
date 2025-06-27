@@ -31,7 +31,7 @@ public class ProgramaOng {
                     System.out.println("\n====== Inserindo Pessoa ======");
 
                     // Id
-                    System.out.println("Id: ");
+                    System.out.println("ID: ");
                     int idInserir = teclado.nextInt();
 
                     // Nome
@@ -71,19 +71,20 @@ public class ProgramaOng {
                 case 3:
                     System.out.println("\n====== Excluindo Pessoa ======");
 
-                    System.out.println("Informa o nome da pessoa a ser excluida: ");
-                    String nomeExcluir = teclado.nextLine();
+                    System.out.println("Informa o ID da pessoa a ser excluida: ");
+                    int idPessoaExcluir = teclado.nextInt();
 
-                    pessoaDAO.excluir(nomeExcluir);
+                    pessoaDAO.excluir(idPessoaExcluir);
                     break;
                 case 4:
                     System.out.println("\n====== Atualizando Pessoa ======");
 
 
-                    System.out.println("Informa o nome da pessoa a ser atualizada: ");
-                    String nomeAtualizado = teclado.nextLine();
+                    System.out.println("Informa o ID da pessoa a ser atualizada: ");
+                    int idPessoaAtualizar = teclado.nextInt();
 
-
+                    System.out.println("Informe o novo id: ");
+                    int idPessoa = teclado.nextInt();
 
                     // Novo Nome
                     System.out.println("Informe o novo nome: ");
@@ -99,13 +100,14 @@ public class ProgramaOng {
 
                     // Criando o novo Objeto atualizado de Agenda
                     Pessoa pessoaAtualizado = new Pessoa(
+                            idPessoa,
                             novoNome,
                             novoTelefone,
                             novoEmail
                     );
 
                     // Atualizando
-                    pessoaDAO.atualizar(nomeAtualizado, pessoaAtualizado);
+                    pessoaDAO.atualizar(idPessoaAtualizar, pessoaAtualizado);
                     break;
                 case 0:
                     System.out.println("Saindo do Sistema.... ");

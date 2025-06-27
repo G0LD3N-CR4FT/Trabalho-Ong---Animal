@@ -36,8 +36,8 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine())!=null){
                 String[] dados = linha.split(",");
-                if(dados.length == 3){
-                    Pessoa pessoa = new Pessoa(dados[0], dados[2], dados[1]);
+                if(dados.length == 4){
+                    Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
                     pessoas.add(pessoa);
                 }
             }
@@ -49,7 +49,7 @@ public class PessoaDAO {
         return pessoas;
     }
 
-    public void excluir(String nomeExcluir) {
+    public void excluir(int idPessoa) {
         List<Pessoa> pessoas = new ArrayList<>();
         boolean achou = false;
 
@@ -60,11 +60,11 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(",");
-                if (dados[0].equals(nomeExcluir)) {
+                if (Integer.parseInt(dados[0]) == (idPessoa)) {
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(dados[0], dados[2], dados[1]);
+                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
                 pessoas.add(pessoa);
             }
 
@@ -101,7 +101,7 @@ public class PessoaDAO {
         }
     }
 
-    public void atualizar(String nomeAtualizar, Pessoa pessoaAtualizado) {
+    public void atualizar(int idPessoa, Pessoa pessoaAtualizado) {
         List<Pessoa> pessoas = new ArrayList<>();
         boolean achou = false;
 
@@ -112,13 +112,13 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(",");
-                if (dados[0].equals(nomeAtualizar)) {
+                if (Integer.parseInt(dados[0]) == (idPessoa)) {
                     // inserindo o pessoa atualizado
                     pessoas.add(pessoaAtualizado);
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(dados[0], dados[2], dados[1]);
+                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
                 pessoas.add(pessoa);
             }
 
