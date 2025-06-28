@@ -1,8 +1,4 @@
-package model;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+package modelo;
 
 public class Pessoa {
 

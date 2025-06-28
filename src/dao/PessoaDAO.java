@@ -1,11 +1,10 @@
 package dao;
 
-import model.Pessoa;
+import modelo.Pessoa;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PessoaDAO {
     private String nomeArquivo = "pessoa.txt";

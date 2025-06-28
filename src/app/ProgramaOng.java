@@ -1,7 +1,7 @@
 package app;
 
 import dao.PessoaDAO;
-import model.Pessoa;
+import modelo.Pessoa;
 
 import java.util.List;
 import java.util.Scanner;

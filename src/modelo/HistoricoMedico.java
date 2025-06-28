@@ -30,7 +30,7 @@ public class HistoricoMedico {
     public int getIdAnimal(){
         return  idAnimal;
     }
-    public void setIdHistorico(){
+    public void setIdAnimal(){
         this.idAnimal = idAnimal;
     }
 
@@ -64,7 +64,7 @@ public class HistoricoMedico {
                 "\nId Animal: " + idAnimal +
                 "\nData: " + data +
                 "\nTipo: " + tipo +
-                "\nDescrição: " + descricao +;
+                "\nDescrição: " + descricao;
     }//fim do método de sobreescrita
 
 }//fim da classe HistoricoMedico
