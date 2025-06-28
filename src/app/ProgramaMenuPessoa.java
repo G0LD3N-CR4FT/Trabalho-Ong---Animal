@@ -6,8 +6,8 @@ import modelo.Pessoa;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProgramaOng {
-    public static void main(String[] args) {
+public class ProgramaMenuPessoa {
+    public static void menuPessoa() {
         Scanner teclado = new Scanner(System.in);
 
         PessoaDAO pessoaDAO  = new PessoaDAO();

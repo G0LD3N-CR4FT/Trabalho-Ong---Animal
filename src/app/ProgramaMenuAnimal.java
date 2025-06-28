@@ -8,9 +8,9 @@ import modelo.HistoricoMedico;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProgramaAnimal {
+public class ProgramaMenuAnimal {
 
-    public static void main(String[] args) {
+    public static void menuAnimal() {
 
         Scanner entrada = new Scanner(System.in);
 
