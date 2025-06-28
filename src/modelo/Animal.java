@@ -82,16 +82,21 @@ public class Animal {
 
     @Override
     public String toString() {
-        return  "\nID: " + id +
-                "\nNome: " + nome +
-                "\nEspécie: " + especie +
-                "\nRaça: " + raca +
-                "\nIdade: " + idade +
-                "\nSexo: " + sexo +
-                "\nStatus: " + status +
-                "\nFoto: " + foto +
-                "\nData Resgate: " + resgateDate +
-                "\nLocal Resgate: " + resgateLocal +
-                "\nAdote com coração: " + (adoteCoracao == 'S' ? "Sim" : "Não");
+        String adocao = adoteCoracao == 'S' ? "Sim" : "Nao";
+        return String.format("""
+            ______________________________________________________________
+            ID                | %d
+            Nome              | %s
+            Espécie           | %s
+            Raça              | %s
+            Idade             | %d
+            Sexo              | %c
+            Status            | %s
+            Foto              | %s
+            Data de Resgate   | %s
+            Local Resgate     | %s
+            Adote com coração | %s
+            ______________________________________________________________
+            """, id, nome, especie, raca, idade, sexo, status, foto, resgateDate, resgateLocal, adocao);
     }
 }
