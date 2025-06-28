@@ -14,32 +14,33 @@ public class AnimalDAO {
         try{
             animal = new BufferedWriter(new FileWriter(nomeArquivo, true));
             animal.write(novoAnimal.getId()+ "," + novoAnimal.getNome()+ ","
-                            +novoAnimal.getEspecie()+ "," +novoAnimal.getRaca()+","+novoAnimal.getIdade()+","
-                            +novoAnimal.getSexo()+","+novoAnimal.getStatus()+","+novoAnimal.getFoto()+","+
-                            novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
+                    +novoAnimal.getEspecie()+ "," +novoAnimal.getRaca()+","+novoAnimal.getIdade()+","
+                    +novoAnimal.getSexo()+","+novoAnimal.getStatus()+","+novoAnimal.getFoto()+","+
+                    novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
             animal.newLine();
             System.out.println("Animal " +novoAnimal.getNome()+" inserido com sucesso!!");
         }catch (IOException e){
             System.out.println("Erro ao inserir o animal: " +novoAnimal.getNome());
         }finally {
             try {
-                animal.close();
+                if(animal!=null) animal.close();
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
         }
-    }
+    }//fim método criar animal
 
     public List<Animal> listarTodos(){
         List<Animal> animais = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new FileReader(nomeArquivo));
+        BufferedReader reader = null;
         try {
+            reader = new BufferedReader(new FileReader(nomeArquivo));
             String linha;
             while ((linha = reader.readLine())!=null){
                 String[] dados = linha.split(",");
                 if(dados.length == 11){
                     Animal contato = new Animal(Integer.parseInt(dados[0]), dados[1], dados[2],dados[3], Integer.parseInt(dados[4]), dados[5].charAt(0), dados[6], dados[7], dados[8],
-                                                dados[9], dados[10].charAt(0));
+                            dados[9], dados[10].charAt(0));
                     animais.add(contato);
                 }
             }
@@ -49,46 +50,46 @@ public class AnimalDAO {
             System.err.println("Erro ao ler o arquivo "+nomeArquivo);
         }finally {
             try{
-                reader.close();
-            }catch (Exception e){
+                if(reader != null) reader.close();
+            }catch (IOException e){
                 System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
             }
         }
         return animais;
 
 
-    }
+    }//fim método listar todos
 
     public void excluir(String nomeExcluir) {
-        List<Animal> animais = listarTodos(); //vai carregar toda a lista de contatos
-        BufferedWriter writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
-        boolean removido = animais.removeIf(animal->animal.getNome().equalsIgnoreCase(nomeExcluir) ); //retorna verdadeiro se algum contato com esse nome foi removido
-        //retorna falso se nenhum contato com aquele nome for encontrado
-        if(removido) { //vai verificar se o contato foi removido ou seja true
+        List<Animal> animais = listarTodos();
+        boolean removido = animais.removeIf(animal -> animal.getNome().equalsIgnoreCase(nomeExcluir));
+
+        if (removido) {
+            BufferedWriter writer = null;
             try {
-                for (Animal novoAnimal : animais) { //vai percorrer o resto dos contato no arquivo
-                    writer.write(novoAnimal.getId()+ "," + novoAnimal.getNome()+ ","
-                            +novoAnimal.getEspecie()+ "," +novoAnimal.getRaca()+","+novoAnimal.getIdade()+","
-                            +novoAnimal.getSexo()+","+novoAnimal.getStatus()+","+novoAnimal.getFoto()+","+
-                            novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());//escreve no arquivo
-                    writer.newLine(); //serve pra escrever uma linha de separação dos contatos
+                writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
+
+                for (Animal novoAnimal : animais) {
+                    writer.write(novoAnimal.getId() + "," + novoAnimal.getNome() + "," +
+                            novoAnimal.getEspecie() + "," + novoAnimal.getRaca() + "," + novoAnimal.getIdade() + "," +
+                            novoAnimal.getSexo() + "," + novoAnimal.getStatus() + "," + novoAnimal.getFoto() + "," +
+                            novoAnimal.getResgateDate() + "," + novoAnimal.getResgateLocal() + "," + novoAnimal.getAdoteCoracao());
+                    writer.newLine();
                 }
-                writer.close(); //fecha o arquivo para garantir que vai salvar corretamente
-                System.out.println("Animal removido com sucesso!!");
+                System.out.println("Animal removido com sucesso!");
             } catch (IOException e) {
-                System.out.println("Erro ao escrever no arquivo!" + nomeArquivo);
-            }finally {
-                try{
-                    writer.close();
-                }catch (Exception e){
-                    System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
+                System.out.println("Erro ao escrever no arquivo! " + nomeArquivo);
+            } finally {
+                try {
+                    if (writer != null) writer.close();
+                } catch (IOException e) {
+                    System.out.println("Erro ao fechar o arquivo! " + e.getMessage());
                 }
             }
-        }else{
+        } else {
             System.out.println("Contato não existe!");
         }
-
-    }//fim do método excluir
+    }//Fim do método excluir
 
     public void atualizar(String nomeAtualizar, Animal animalAtualizado) {
         List<Animal> animais = listarTodos(); //carrega lista dos contatos cadastrados
@@ -102,8 +103,9 @@ public class AnimalDAO {
             }
         }
         if(atualizou){
+            BufferedWriter writer = null;
             try{
-                BufferedWriter writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
+                writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
                 for (Animal novoAnimal : animais){
                     writer.write(novoAnimal.getId()+ "," + novoAnimal.getNome()+ ","
                             +novoAnimal.getEspecie()+ "," +novoAnimal.getRaca()+","+novoAnimal.getIdade()+","
@@ -111,14 +113,15 @@ public class AnimalDAO {
                             novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
                     writer.newLine();
                 }
-                writer.close(); //fecha o arquivo para garantir que vai salvar corretamente
                 System.out.println("Animal atulizado com exito!!");
             }catch (IOException e){
                 System.out.println("Erro ao atualizar cadastro de animal!"+e.getMessage());
             }finally {
                 try{
-                    Writer.close();
-                }catch (Exception e){
+                    if (writer != null) {
+                        writer.close();
+                    }
+                }catch (IOException e){
                     System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
                 }
             }
