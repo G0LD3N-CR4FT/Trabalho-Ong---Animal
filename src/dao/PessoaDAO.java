@@ -5,6 +5,7 @@ import modelo.Pessoa;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PessoaDAO {
     private String nomeArquivo = "pessoa.txt";
@@ -13,7 +14,7 @@ public class PessoaDAO {
         BufferedWriter pessoa=null;
         try{
             pessoa = new BufferedWriter(new FileWriter(nomeArquivo, true));
-            pessoa.write(novaPessoa.getNome()+","
+            pessoa.write(novaPessoa.getIdPessoa()+ "," +novaPessoa.getNome()+","
                     + novaPessoa.getEmail()+"," +novaPessoa.getTelefone());
             pessoa.newLine();
             System.out.println("Pessoa "+novaPessoa.getNome()+ " inserida com sucesso!");
@@ -36,7 +37,7 @@ public class PessoaDAO {
             while ((linha = reader.readLine())!=null){
                 String[] dados = linha.split(",");
                 if(dados.length == 4){
-                    Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
+                    Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
                     pessoas.add(pessoa);
                 }
             }
@@ -63,7 +64,7 @@ public class PessoaDAO {
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
+                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
                 pessoas.add(pessoa);
             }
 
@@ -117,7 +118,7 @@ public class PessoaDAO {
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[2], dados[1], dados[3]);
+                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
                 pessoas.add(pessoa);
             }
 

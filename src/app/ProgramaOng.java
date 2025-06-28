@@ -34,6 +34,9 @@ public class ProgramaOng {
                     System.out.println("ID: ");
                     int idInserir = teclado.nextInt();
 
+                    // Limpando o buffer
+                    teclado.nextLine();
+
                     // Nome
                     System.out.println("Nome: ");
                     String nomeInserir = teclado.nextLine();
