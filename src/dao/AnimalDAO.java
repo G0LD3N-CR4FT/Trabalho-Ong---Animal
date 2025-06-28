@@ -39,9 +39,9 @@ public class AnimalDAO {
             while ((linha = reader.readLine())!=null){
                 String[] dados = linha.split(",");
                 if(dados.length == 11){
-                    Animal contato = new Animal(Integer.parseInt(dados[0]), dados[1], dados[2],dados[3], Integer.parseInt(dados[4]), dados[5].charAt(0), dados[6], dados[7], dados[8],
+                    Animal animal = new Animal(Integer.parseInt(dados[0]), dados[1], dados[2],dados[3], Integer.parseInt(dados[4]), dados[5].charAt(0), dados[6], dados[7], dados[8],
                             dados[9], dados[10].charAt(0));
-                    animais.add(contato);
+                    animais.add(animal);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -87,15 +87,15 @@ public class AnimalDAO {
                 }
             }
         } else {
-            System.out.println("Contato não existe!");
+            System.out.println("Animal não existe!");
         }
     }//Fim do método excluir
 
     public void atualizar(String nomeAtualizar, Animal animalAtualizado) {
-        List<Animal> animais = listarTodos(); //carrega lista dos contatos cadastrados
-        boolean atualizou = false; //pra poder saber se houve algum contato atualizado
+        List<Animal> animais = listarTodos(); //carrega lista dos animais cadastrados
+        boolean atualizou = false; //pra poder saber se houve algum animal atualizado
 
-        for (int i = 0; i < animais.size(); i++) { //percorre os contatos //contatos.size já sabe quantos elementos tem na lista
+        for (int i = 0; i < animais.size(); i++) { //percorre os animais //animais.size já sabe quantos elementos tem na lista
             if (animais.get(i).getNome().equalsIgnoreCase(nomeAtualizar)) {
                 animais.set(i, animalAtualizado);
                 atualizou = true;

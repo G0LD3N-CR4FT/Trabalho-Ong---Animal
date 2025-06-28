@@ -113,8 +113,8 @@ public class ProgramaMenuPessoa {
                     pessoaDAO.atualizar(idPessoaAtualizar, pessoaAtualizado);
                     break;
                 case 0:
-                    System.out.println("Saindo do Sistema.... ");
-                    break;
+                    System.out.println("Retornando ao menu principal...");
+                    return;
                 default:
                     System.out.println("Selecione uma opcao valida");
             }

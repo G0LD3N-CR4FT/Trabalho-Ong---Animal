@@ -4,7 +4,9 @@ import dao.PessoaDAO;
 
 import java.util.Scanner;
 
+import static app.ProgramaMenuAdotante.menuAdotante;
 import static app.ProgramaMenuAnimal.menuAnimal;
+import static app.ProgramaMenuHistoricoMedico.menuHistorico;
 import static app.ProgramaMenuPessoa.menuPessoa;
 
 public class ProgramaMenuPrincipal {
@@ -17,9 +19,10 @@ public class ProgramaMenuPrincipal {
         do {
             System.out.println("\n ========= MENU PRINCIPAL =========");
             System.out.println("1. Menu Animal");
-            System.out.println("2. Menu Pessoa");
-            System.out.println("3. Menu Adotante");
-            System.out.println("4. Menu Voluntario");
+            System.out.println("2. Histórico Médico");
+            System.out.println("3. Menu Pessoa");
+            System.out.println("4. Menu Adotante");
+            System.out.println("5. Menu Voluntario");
             System.out.println("0. Sair");
 
             System.out.println("Escolha uma opcao: ");
@@ -32,13 +35,13 @@ public class ProgramaMenuPrincipal {
                     menuAnimal();
                     break;
                 case 2:
-                    menuPessoa();
+                    menuHistorico();
                     break;
                 case 3:
-
+                    menuPessoa();
                     break;
                 case 4:
-
+                    menuAdotante();
                     break;
                 case 0:
                     System.out.println("Saindo do Sistema.... ");
