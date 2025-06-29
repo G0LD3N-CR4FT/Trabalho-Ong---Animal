@@ -59,12 +59,16 @@ public class HistoricoMedico {
     }
 
     @Override
-    public String toString(){
-        return  "\nId Histórico Médico: " + idHistorico +
-                "\nId Animal: " + idAnimal +
-                "\nData: " + data +
-                "\nTipo: " + tipo +
-                "\nDescrição: " + descricao;
-    }//fim do método de sobreescrita
+    public String toString() {
+        return String.format("""
+            ______________________________________________________________
+            ID Histórico      | %d
+            ID Animal         | %d
+            Data              | %s
+            Tipo              | %s
+            Descrição         | %s
+            ______________________________________________________________
+            """, idHistorico, idAnimal, data, tipo, descricao);
+    }
 
 }//fim da classe HistoricoMedico
