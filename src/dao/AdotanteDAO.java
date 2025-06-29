@@ -58,7 +58,7 @@ public class AdotanteDAO {
             }
         }
         return listaAdotantes;
-}//fim da classe listarTodos().
+}//fim listarTodos().
 
     public void excluir(int idAdotanteExcluir){
         List<Adotante> listaAdotantes = listarTodos();
@@ -88,7 +88,7 @@ public class AdotanteDAO {
         } else {
             System.out.println("Adotante não existe!");
         }
-    }//fim da classe Excluir
+    }//fim do Excluir
 
     public void atualizar(int idAdotanteAtualizar, Adotante adotanteAtualizado) {
         List<Adotante> listaAdotantes = listarTodos(); //carrega lista dos adotantes cadastrados

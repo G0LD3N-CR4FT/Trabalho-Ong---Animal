@@ -8,6 +8,7 @@ import static app.ProgramaMenuAdotante.menuAdotante;
 import static app.ProgramaMenuAnimal.menuAnimal;
 import static app.ProgramaMenuHistoricoMedico.menuHistorico;
 import static app.ProgramaMenuPessoa.menuPessoa;
+import static app.ProgramaMenuVoluntario.menuVoluntario;
 
 public class ProgramaMenuPrincipal {
     public static void main(String[] args) {
@@ -43,6 +44,8 @@ public class ProgramaMenuPrincipal {
                 case 4:
                     menuAdotante();
                     break;
+                case 5:
+                    menuVoluntario();
                 case 0:
                     System.out.println("Saindo do Sistema.... ");
                     break;
