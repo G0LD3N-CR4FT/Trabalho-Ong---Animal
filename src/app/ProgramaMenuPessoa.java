@@ -30,13 +30,6 @@ public class ProgramaMenuPessoa {
                 case 1:
                     System.out.println("\n====== Inserindo Pessoa ======");
 
-                    // Id
-                    System.out.println("ID: ");
-                    int idInserir = teclado.nextInt();
-
-                    // Limpando o buffer
-                    teclado.nextLine();
-
                     // Nome
                     System.out.println("Nome: ");
                     String nomeInserir = teclado.nextLine();
@@ -50,7 +43,6 @@ public class ProgramaMenuPessoa {
                     String telefoneInserir = teclado.nextLine();
 
                     Pessoa novaPessoa = new Pessoa(
-                            idInserir,
                             nomeInserir,
                             telefoneInserir,
                             emailInserir
@@ -74,20 +66,16 @@ public class ProgramaMenuPessoa {
                 case 3:
                     System.out.println("\n====== Excluindo Pessoa ======");
 
-                    System.out.println("Informa o ID da pessoa a ser excluida: ");
-                    int idPessoaExcluir = teclado.nextInt();
+                    System.out.println("Informe o nome da pessoa a ser excluida: ");
+                    String nomeExcluir = teclado.nextLine();
 
-                    pessoaDAO.excluir(idPessoaExcluir);
+                    pessoaDAO.excluir(nomeExcluir);
                     break;
                 case 4:
                     System.out.println("\n====== Atualizando Pessoa ======");
 
-
-                    System.out.println("Informa o ID da pessoa a ser atualizada: ");
-                    int idPessoaAtualizar = teclado.nextInt();
-
-                    System.out.println("Informe o novo id: ");
-                    int idPessoa = teclado.nextInt();
+                    System.out.println("Informa o nome da pessoa a ser atualizada: ");
+                    String nomeAtualizar = teclado.nextLine();
 
                     // Novo Nome
                     System.out.println("Informe o novo nome: ");
@@ -103,14 +91,13 @@ public class ProgramaMenuPessoa {
 
                     // Criando o novo Objeto atualizado de Agenda
                     Pessoa pessoaAtualizado = new Pessoa(
-                            idPessoa,
                             novoNome,
                             novoTelefone,
                             novoEmail
                     );
 
                     // Atualizando
-                    pessoaDAO.atualizar(idPessoaAtualizar, pessoaAtualizado);
+                    pessoaDAO.atualizar(nomeAtualizar, pessoaAtualizado);
                     break;
                 case 0:
                     System.out.println("Retornando ao menu principal...");

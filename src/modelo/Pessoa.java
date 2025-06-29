@@ -2,10 +2,9 @@ package modelo;
 
 public class Pessoa {
 
-    private int idPessoa;
-    private String nome;
-    private String telefone;
-    private String email;
+    protected String nome;
+    protected String telefone;
+    protected String email;
 
     public Pessoa() {
 
@@ -35,16 +34,7 @@ public class Pessoa {
         this.email = email;
     }
 
-    public int getIdPessoa() {
-        return idPessoa;
-    }
-
-    public void setIdPessoa(int idPessoa) {
-        this.idPessoa = idPessoa;
-    }
-
-    public Pessoa(int idPessoa, String nome, String telefone, String email) {
-        this.idPessoa = idPessoa;
+    public Pessoa(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -54,12 +44,11 @@ public class Pessoa {
     public String toString() {
         return String.format("""
             ________________________________________________
-            ID       | %-4d\s
             Nome     | %-25s               \s
             Telefone | %-15s     \s
             Email    | %-30s
             ________________________________________________
-           \s""", idPessoa, nome, telefone, email);
+           \s""", nome, telefone, email);
     }
 
 }

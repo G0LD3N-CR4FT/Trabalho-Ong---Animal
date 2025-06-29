@@ -52,13 +52,13 @@ public class Voluntario extends Pessoa{
     public String toString(){
         return String.format("""
             ______________________________________________________________
+            Id Voluntário     | %d
             Nome              | %s
             Telefone          | %s
             E-mail            | %s
-            Id Voluntário     | %d
             Disponibilidade   | %s
             Habilidades       | %s
             _______________________________________________________________
-            """, getNome(), getTelefone(), getEmail(), disponibilidade, habilidades);
+            """, idVoluntario, super.nome, super.telefone, super.email, disponibilidade, habilidades);
     }
 }//fim da classe Voluntario.

@@ -30,6 +30,13 @@ public class ProgramaMenuVoluntario{
                 case 1:
                     System.out.println("\n====== Inserindo Voluntário ======");
 
+                    // ID voluntário
+                    System.out.println("ID Voluntário: ");
+                    int idAdotanteInserir = teclado.nextInt();
+
+                    // Limpando o buffer
+                    teclado.nextLine();
+
                     // Nome
                     System.out.println("Nome: ");
                     String nomeInserir = teclado.nextLine();
@@ -41,13 +48,6 @@ public class ProgramaMenuVoluntario{
                     // telefone
                     System.out.println("Telefone: ");
                     String telefoneInserir = teclado.nextLine();
-
-                    // ID adotante
-                    System.out.println("ID Voluntário: ");
-                    int idAdotanteInserir = teclado.nextInt();
-
-                    // Limpando o buffer
-                    teclado.nextLine();
 
                     // disponibilidade
                     System.out.println("Disponibilidade: ");
@@ -74,7 +74,7 @@ public class ProgramaMenuVoluntario{
                     List<Voluntario> listaVoluntario = voluntarioDAO.listarTodos();
 
                     if(listaVoluntario.isEmpty()){
-                        System.out.println("Nenhum adotante cadastrado");
+                        System.out.println("Nenhum voluntário cadastrado");
                     } else {
                         for (Pessoa contato: listaVoluntario){
                             System.out.println(contato);
@@ -96,6 +96,12 @@ public class ProgramaMenuVoluntario{
                     System.out.println("Informa o ID Voluntário a ser atualizado: ");
                     int idVoluntarioAtualizar = teclado.nextInt();
 
+                    // ID voluntário
+                    System.out.println("Novo ID Voluntário: ");
+                    int novoIdVoluntarioInserir = teclado.nextInt();
+
+                    // Limpando o buffer
+                    teclado.nextLine();
 
                     // Nome
                     System.out.println("Novo Nome: ");
@@ -108,13 +114,6 @@ public class ProgramaMenuVoluntario{
                     // telefone
                     System.out.println("Novo Telefone: ");
                     String novoTelefoneInserir = teclado.nextLine();
-
-                    // ID adotante
-                    System.out.println("Novo ID Voluntário: ");
-                    int novoIdVoluntarioInserir = teclado.nextInt();
-
-                    // Limpando o buffer
-                    teclado.nextLine();
 
                     // Disponibilidade
                     System.out.println("Novo Disponibilidade: ");

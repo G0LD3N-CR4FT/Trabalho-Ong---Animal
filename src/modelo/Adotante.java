@@ -13,8 +13,8 @@ public class Adotante extends Pessoa {
     }
 
     //CONSTRUTOR COM PARÂMETRO
-    public Adotante(int idPessoa, String nome, String telefone, String email, int idAdotante, String questionario) {
-        super(idPessoa, nome, telefone, email);
+    public Adotante(String nome, String telefone, String email, int idAdotante, String questionario) {
+        super(nome, telefone, email);
         this.idAdotante = idAdotante;
         this.questionario = questionario;
     }
@@ -40,14 +40,13 @@ public class Adotante extends Pessoa {
     public String toString() {
         return String.format("""
             ______________________________________________________________
-            Id Pessoa         | %d
+            Id Adotante       | %d
             Nome              | %s
             Telefone          | %s
             E-mail            | %s
-            Id Adotante       | %d
             Questionario      | %s
             _______________________________________________________________
-            """, getIdPessoa(), getNome(), getTelefone(), getEmail(), idAdotante, questionario);
+            """, idAdotante, super.nome, super.telefone, super.email, questionario);
     }
 
 }//fim da classe Adotante

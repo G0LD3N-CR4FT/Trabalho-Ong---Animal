@@ -31,9 +31,9 @@ public class ProgramaMenuAdotante{
                     case 1:
                         System.out.println("\n====== Inserindo Adotante ======");
 
-                        // Id
-                        System.out.println("ID Pessoa: ");
-                        int idInserir = teclado.nextInt();
+                        // ID adotante
+                        System.out.println("ID Adotante: ");
+                        int idAdotanteInserir = teclado.nextInt();
 
                         // Limpando o buffer
                         teclado.nextLine();
@@ -50,19 +50,11 @@ public class ProgramaMenuAdotante{
                         System.out.println("Telefone: ");
                         String telefoneInserir = teclado.nextLine();
 
-                        // ID adotante
-                        System.out.println("ID Adotante: ");
-                        int idAdotanteInserir = teclado.nextInt();
-
-                        // Limpando o buffer
-                        teclado.nextLine();
-
                         // questionário
                         System.out.println("Questionário: ");
                         String questionarioInserir = teclado.nextLine();
 
                         Adotante novoAdotante = new Adotante(
-                                idInserir,
                                 nomeInserir,
                                 telefoneInserir,
                                 emailInserir,
@@ -100,9 +92,9 @@ public class ProgramaMenuAdotante{
                         System.out.println("Informa o ID adotante a ser atualizado: ");
                         int idAdotanteAtualizar = teclado.nextInt();
 
-                        // Id
-                        System.out.println("Novo ID Pessoa: ");
-                        int novoIdInserir = teclado.nextInt();
+                        // ID adotante
+                        System.out.println("Novo ID Adotante: ");
+                        int novoIdAdotanteInserir = teclado.nextInt();
 
                         // Limpando o buffer
                         teclado.nextLine();
@@ -119,20 +111,12 @@ public class ProgramaMenuAdotante{
                         System.out.println("Novo Telefone: ");
                         String novoTelefoneInserir = teclado.nextLine();
 
-                        // ID adotante
-                        System.out.println("Novo ID Adotante: ");
-                        int novoIdAdotanteInserir = teclado.nextInt();
-
-                        // Limpando o buffer
-                        teclado.nextLine();
-
                         // questionário
                         System.out.println("Novo Questionário: ");
                         String novoQuestionarioInserir = teclado.nextLine();
 
                         // Criando o novo Objeto atualizado de Agenda
                         Adotante adotanteAtualizado = new Adotante(
-                                novoIdInserir,
                                 novoNomeInserir,
                                 novoEmailInserir,
                                 novoTelefoneInserir,

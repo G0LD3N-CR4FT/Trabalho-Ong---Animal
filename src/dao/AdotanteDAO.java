@@ -16,7 +16,7 @@ public class AdotanteDAO {
         BufferedWriter writer=null;
         try{
             writer = new BufferedWriter(new FileWriter(nomeArquivo, true));
-            writer.write(novoAdotante.getIdPessoa()+ "," +novoAdotante.getNome()+ "," +novoAdotante.getEmail()+ "," +
+            writer.write(novoAdotante.getNome()+ "," +novoAdotante.getEmail()+ "," +
                             novoAdotante.getTelefone()+","+novoAdotante.getIdAdotante()+","+novoAdotante.getQuestionario());
             writer.newLine();
         System.out.println("Adotante " +novoAdotante.getNome()+" inserido com sucesso!!");
@@ -40,9 +40,9 @@ public class AdotanteDAO {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(",");
-                if (dados.length == 6) {
-                    Adotante adotante = new Adotante(Integer.parseInt(dados[0]), dados[1], dados[2], dados[3],
-                            Integer.parseInt(dados[4]), dados[5]);
+                if (dados.length == 5) {
+                    Adotante adotante = new Adotante(dados[0], dados[1], dados[2],
+                            Integer.parseInt(dados[3]), dados[4]);
                     listaAdotantes.add(adotante);
                 }//fim if
          }
@@ -70,7 +70,7 @@ public class AdotanteDAO {
                 writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
 
                 for (Adotante novoAdotante : listaAdotantes) {
-                    writer.write(novoAdotante.getIdPessoa() + "," + novoAdotante.getNome() + "," +
+                    writer.write(novoAdotante.getNome() + "," +
                             novoAdotante.getEmail()+ "," + novoAdotante.getTelefone() + "," + novoAdotante.getIdAdotante() + "," +
                             novoAdotante.getQuestionario());
                     writer.newLine();
@@ -106,7 +106,7 @@ public class AdotanteDAO {
             try{
                 writer = new BufferedWriter(new FileWriter(this.nomeArquivo));
                 for (Adotante novoAdotante : listaAdotantes){
-                    writer.write(novoAdotante.getIdPessoa() + "," + novoAdotante.getNome() + "," +
+                    writer.write(novoAdotante.getNome() + "," +
                             novoAdotante.getEmail()+ "," + novoAdotante.getTelefone() + "," + novoAdotante.getIdAdotante() + "," +
                             novoAdotante.getQuestionario());
                     writer.newLine();

@@ -14,7 +14,7 @@ public class PessoaDAO {
         BufferedWriter pessoa=null;
         try{
             pessoa = new BufferedWriter(new FileWriter(nomeArquivo, true));
-            pessoa.write(novaPessoa.getIdPessoa()+ "," +novaPessoa.getNome()+","
+            pessoa.write(novaPessoa.getNome()+","
                     + novaPessoa.getEmail()+"," +novaPessoa.getTelefone());
             pessoa.newLine();
             System.out.println("Pessoa "+novaPessoa.getNome()+ " inserida com sucesso!");
@@ -36,8 +36,8 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine())!=null){
                 String[] dados = linha.split(",");
-                if(dados.length == 4){
-                    Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
+                if(dados.length == 3){
+                    Pessoa pessoa = new Pessoa(dados[0], dados[2], dados[1]);
                     pessoas.add(pessoa);
                 }
             }
@@ -49,7 +49,7 @@ public class PessoaDAO {
         return pessoas;
     }
 
-    public void excluir(int idPessoa) {
+    public void excluir(String nomeExcluir) {
         List<Pessoa> pessoas = new ArrayList<>();
         boolean achou = false;
 
@@ -60,11 +60,11 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(",");
-                if (Integer.parseInt(dados[0]) == (idPessoa)) {
+                if (dados[0].equalsIgnoreCase(nomeExcluir)) {
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
+                Pessoa pessoa = new Pessoa(dados[0], dados[1], dados[3]);
                 pessoas.add(pessoa);
             }
 
@@ -101,7 +101,7 @@ public class PessoaDAO {
         }
     }
 
-    public void atualizar(int idPessoa, Pessoa pessoaAtualizado) {
+    public void atualizar(String nomeAtualizar, Pessoa pessoaAtualizado) {
         List<Pessoa> pessoas = new ArrayList<>();
         boolean achou = false;
 
@@ -112,13 +112,13 @@ public class PessoaDAO {
             String linha;
             while ((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(",");
-                if (Integer.parseInt(dados[0]) == (idPessoa)) {
+                if (dados[0].equalsIgnoreCase(nomeAtualizar)) {
                     // inserindo o pessoa atualizado
                     pessoas.add(pessoaAtualizado);
                     achou = true;
                     continue;
                 }
-                Pessoa pessoa = new Pessoa(Integer.parseInt(dados[0]), dados[1], dados[3], dados[2]);
+                Pessoa pessoa = new Pessoa(dados[0], dados[1], dados[2]);
                 pessoas.add(pessoa);
             }
 
