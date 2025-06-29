@@ -1,5 +1,6 @@
 package app;
 
+import colors.ConsoleColors;
 import dao.AnimalDAO;
 import dao.HistoricoMedicoDAO;
 import modelo.Animal;
@@ -18,13 +19,14 @@ public class ProgramaMenuAnimal {
         int opcao;
 
         do{
-            System.out.println("\n ======= MENU ANIMAL =======");
+            System.out.println(ConsoleColors.GREEN_BOLD + "\n======= MENU ANIMAL =======" + ConsoleColors.RESET);
             System.out.println("1. Inserir Animal");
             System.out.println("2. Listar Animal");
             System.out.println("3. Excluir Animal");
             System.out.println("4. Atualizar Animal");
             System.out.println("5. Gerenciar Histórico Médico");
             System.out.println("0. Voltar ao Menu Principal");
+            System.out.println(ConsoleColors.GREEN_BOLD + "===========================" + ConsoleColors.RESET);
             System.out.println("Escolha uma opção: ");
             opcao = entrada.nextInt();
             entrada.nextLine(); // consumir o caracter de quebra de linha (ENTER)

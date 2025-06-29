@@ -1,5 +1,6 @@
 package app;
 
+import colors.ConsoleColors;
 import dao.AdocaoDAO;
 import dao.AdotanteDAO;
 import modelo.Adocao;
@@ -21,12 +22,13 @@ public class ProgramaMenuAdocao {
         AnimalDAO animalDAO = new AnimalDAO();
 
         do {
-            System.out.println("\n====== MENU ADOCACAO ======");
+            System.out.println(ConsoleColors.CYAN_BOLD + "\n====== MENU ADOCACAO ======" + ConsoleColors.RESET);
             System.out.println("1. Inserir Adocao");
             System.out.println("2. Listar Adocoes");
             System.out.println("3. Excluir Adocao");
             System.out.println("4. Atualizar Adocao");
             System.out.println("0. Voltar ao Menu Principal");
+            System.out.println(ConsoleColors.CYAN_BOLD + "===========================" + ConsoleColors.RESET);
             System.out.print("Escolha uma opcao: ");
             opcaoAdocao = entrada.nextInt();
             entrada.nextLine();

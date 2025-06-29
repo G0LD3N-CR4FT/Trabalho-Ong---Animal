@@ -1,5 +1,6 @@
 package app;
 
+import colors.ConsoleColors;
 import dao.PessoaDAO;
 
 import java.util.Scanner;
@@ -19,13 +20,14 @@ public class ProgramaMenuPrincipal {
         int op;
 
         do {
-            System.out.println("\n ========= MENU PRINCIPAL =========");
+            System.out.println(ConsoleColors.BLUE_BOLD + "\n========= MENU PRINCIPAL =========" + ConsoleColors.RESET);
             System.out.println("1. Menu Animal");
             System.out.println("2. Histórico Médico");
             System.out.println("3. Menu Adoção");
             System.out.println("4. Menu Adotante");
             System.out.println("5. Menu Voluntario");
             System.out.println("0. Sair");
+            System.out.println(ConsoleColors.BLUE_BOLD + "=================================" + ConsoleColors.RESET);
 
             System.out.println("Escolha uma opcao: ");
             op = teclado.nextInt();

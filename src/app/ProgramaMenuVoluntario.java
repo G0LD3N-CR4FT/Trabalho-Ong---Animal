@@ -1,5 +1,6 @@
 package app;
 
+import colors.ConsoleColors;
 import modelo.Voluntario;
 import dao.VoluntarioDAO;
 import dao.PessoaDAO;
@@ -14,13 +15,13 @@ public class ProgramaMenuVoluntario{
         int op;
 
         do {
-            System.out.println("\n ========= MENU VOLUNTÁRIO =========");
+            System.out.println(ConsoleColors.ORANGE_BOLD + "\n========= MENU VOLUNTÁRIO =========" + ConsoleColors.RESET);
             System.out.println("1. Inserir Voluntário");
             System.out.println("2. Listar Voluntário");
             System.out.println("3. Excluir Voluntário");
             System.out.println("4. Atualizar Voluntário");
             System.out.println("0. Voltar ao Menu Principal");
-
+            System.out.println(ConsoleColors.ORANGE_BOLD + "===================================" + ConsoleColors.RESET);
             System.out.println("Escolha uma opcao: ");
             op = teclado.nextInt();
 

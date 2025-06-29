@@ -1,5 +1,6 @@
 package app;
 
+import colors.ConsoleColors;
 import dao.HistoricoMedicoDAO;
 import modelo.Animal;
 import modelo.HistoricoMedico;
@@ -16,12 +17,13 @@ public class ProgramaMenuHistoricoMedico{
         AnimalDAO animalDAO = new AnimalDAO();// cria DAO
 
         do {
-            System.out.println("\n====== HISTÓRICO MÉDICO ======");
+            System.out.println(ConsoleColors.RED_BOLD + "\n====== HISTÓRICO MÉDICO ======" + ConsoleColors.RESET);
             System.out.println("1. Inserir Histórico Médico");
             System.out.println("2. Listar Históricos Médicos");
             System.out.println("3. Excluir Histórico Médico");
             System.out.println("4. Atualizar Histórico Médico");
             System.out.println("0. Voltar ao Menu Principal");
+            System.out.println(ConsoleColors.RED_BOLD + "==============================" + ConsoleColors.RESET);
             System.out.print("Escolha uma opção: ");
             opcaoHistorico = entrada.nextInt();
             entrada.nextLine(); // limpar o Enter
