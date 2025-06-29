@@ -88,4 +88,67 @@ public class AdocaoDAO {
         return listaAdocoes;
     }
 
+    public static void excluir(int idAdocao) {
+        List<Adocao> listaAdocoes = listarTodos();
+        boolean removido = listaAdocoes.removeIf(adocao -> adocao.getIdAdocao() == idAdocao);
+
+        if (removido) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+                for (Adocao adocao : listaAdocoes) {
+                    String idsAnimaisStr = adocao.getListaAnimal().stream()
+                            .map(animal -> String.valueOf(animal.getId()))
+                            .collect(Collectors.joining(";"));
+
+                    writer.write(adocao.getIdAdocao() + "," +
+                            adocao.getDataAdocao() + "," +
+                            adocao.getAdotante().getIdAdotante() + "," +
+                            idsAnimaisStr + "," +
+                            adocao.isAprovado());
+                    writer.newLine();
+                }
+                System.out.println("Adoção removida com sucesso!");
+            } catch (IOException e) {
+                System.out.println("Erro ao reescrever o arquivo: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Adoção com ID " + idAdocao + " não encontrada.");
+        }
+    }
+
+    public static void atualizar(int idAdocao, Adocao adocaoAtualizada) {
+        List<Adocao> listaAdocoes = listarTodos();
+        boolean atualizou = false;
+
+        for (int i = 0; i < listaAdocoes.size(); i++) {
+            if (listaAdocoes.get(i).getIdAdocao() == idAdocao) {
+                listaAdocoes.set(i, adocaoAtualizada);
+                atualizou = true;
+                break;
+            }
+        }
+
+        if (atualizou) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
+                for (Adocao adocao : listaAdocoes) {
+                    String idsAnimaisStr = adocao.getListaAnimal().stream()
+                            .map(animal -> String.valueOf(animal.getId()))
+                            .collect(Collectors.joining(";"));
+
+                    writer.write(adocao.getIdAdocao() + "," +
+                            adocao.getDataAdocao() + "," +
+                            adocao.getAdotante().getIdAdotante() + "," +
+                            idsAnimaisStr + "," +
+                            adocao.isAprovado());
+                    writer.newLine();
+                }
+                System.out.println("Adoção atualizada com sucesso!");
+            } catch (IOException e) {
+                System.out.println("Erro ao reescrever o arquivo: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Adoção com ID " + idAdocao + " não encontrada.");
+        }
+    }
+
+
 }

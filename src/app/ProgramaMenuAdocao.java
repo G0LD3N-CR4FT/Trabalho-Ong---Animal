@@ -17,26 +17,26 @@ public class ProgramaMenuAdocao {
     public static void menuAdocao(){
         Scanner entrada = new Scanner(System.in);
         int opcaoAdocao;
-        AdocaoDAO adocaoDAO = new AdocaoDAO(); // cria DAO
-        AnimalDAO animalDAO = new AnimalDAO();// cria DAO
+        AdocaoDAO adocaoDAO = new AdocaoDAO();
+        AnimalDAO animalDAO = new AnimalDAO();
 
         do {
-            System.out.println("\n====== MENU ADOÇÃO ======");
-            System.out.println("1. Inserir Adoção");
-            System.out.println("2. Listar Adoções");
-            System.out.println("3. Excluir Adoção");
-            System.out.println("4. Atualizar Adoção");
+            System.out.println("\n====== MENU ADOCACAO ======");
+            System.out.println("1. Inserir Adocao");
+            System.out.println("2. Listar Adocoes");
+            System.out.println("3. Excluir Adocao");
+            System.out.println("4. Atualizar Adocao");
             System.out.println("0. Voltar ao Menu Principal");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Escolha uma opcao: ");
             opcaoAdocao = entrada.nextInt();
-            entrada.nextLine(); // limpar o Enter
+            entrada.nextLine();
             System.out.println();
 
             switch (opcaoAdocao) {
                 case 1:
-                    System.out.println("Id da Adoção: ");
+                    System.out.println("Id da Adocao: ");
                     int idAdocao = entrada.nextInt();
-                    entrada.nextLine(); //pular line
+                    entrada.nextLine();
 
                     System.out.println("Data da Adocao: ");
                     String data = entrada.nextLine();
@@ -44,15 +44,14 @@ public class ProgramaMenuAdocao {
                     System.out.println("Escolha um adotante cadastrado: ");
                     List<Adotante> adotantes = AdotanteDAO.listarTodos();
                     for(Adotante a : adotantes){
-                        System.out.println("Id: "+a.getIdAdotante()+ " Nome: "+a.getNome());
+                        System.out.printf("%-5s | %-20s\n", "ID: " + a.getIdAdotante(), "Nome: " + a.getNome());
                     }
 
                     boolean achou = false;
                     Adotante adotante = new Adotante();
 
-                    // Loop até encontrar um ID válido
                     do {
-                        System.out.print("Id do Adotante: ");
+                        System.out.println("Id do Adotante: ");
                         int idAdotante = entrada.nextInt();
                         entrada.nextLine();
 
@@ -63,29 +62,27 @@ public class ProgramaMenuAdocao {
                             }
                         }
                         if (!achou) {
-                            System.out.println("Adotante não cadastrado. Tente novamente.");
+                            System.out.println("Adotante nao cadastrado. Tente novamente.");
                         }
                     } while (!achou);
 
                     String opcaoAnimal = "S";
-                    List<Animal> listaAnimais = new ArrayList<Animal>();
+                    List<Animal> listaAnimais = new ArrayList<>();
                     List<Animal> animais = animalDAO.listarTodos();
 
                     while(!opcaoAnimal.equalsIgnoreCase("N")) {
-                        System.out.println("Escolha um animal cadastrado: ");
+                        System.out.println("Animais disponiveis: ");
                         for(Animal a : animais){
-                            System.out.println("Id: "+a.getId()+ " Nome: "+a.getNome());
+                            System.out.printf("%-5s | %-20s\n", "ID: " + a.getId(), "Nome: " + a.getNome());
                         }
 
-                    achou = false;
+                        achou = false;
 
-                        // Loop até encontrar um ID válido
                         do {
                             System.out.println();
                             System.out.println("Id animal: ");
                             int idAnimal = entrada.nextInt();
                             entrada.nextLine();
-                            List<Animal> copiaAnimais = animais;
 
                             Iterator<Animal> iterator = animais.iterator();
                             while (iterator.hasNext()) {
@@ -93,13 +90,13 @@ public class ProgramaMenuAdocao {
                                 if (a.getId() == idAnimal) {
                                     achou = true;
                                     listaAnimais.add(a);
-                                    animais.remove(a); // forma segura de remover
+                                    iterator.remove();
                                     break;
                                 }
                             }
 
                             if (!achou) {
-                                System.out.println("Animal não cadastrado. Tente novamente.");
+                                System.out.println("Animal nao cadastrado. Tente novamente.");
                             }
                         } while (!achou);
 
@@ -114,59 +111,121 @@ public class ProgramaMenuAdocao {
                     AdocaoDAO.salvar(novaAdocao);
                     break;
                 case 2:
-                    System.out.println("\n==== Listando Adoções ====");
+                    System.out.println("\n==== Listando Adocoes ====");
                     List<Adocao> listaAdocoes = AdocaoDAO.listarTodos();
                     if (listaAdocoes.isEmpty()) {
-                        System.out.println("Nenhuma adoção cadastrada.");
+                        System.out.println("Nenhuma adocao cadastrada.");
                     } else {
                         for (Adocao h : listaAdocoes) {
                             System.out.println(h);
                         }
                     }
                     break;
+
                 case 3:
-//                    System.out.println("\n==== Excluindo Histórico Médico ====");
-//                    List<HistoricoMedico> listaHistorico = historicoDAO.listarTodos();
-//                    if (listaHistorico.isEmpty()) {
-//                        System.out.println("Nenhum histórico médico cadastrado.");
-//                    } else {
-//                        for (HistoricoMedico h : listaHistorico) {
-//                            System.out.println(h);
-//                        }
-//                    }
-//                    System.out.println("Informe o Id do histórico a ser excluido:");
-//                    int idExcluir = Integer.parseInt(entrada.nextLine());
-//                    historicoDAO.excluir(idExcluir);
-                      break;
-                case 4:
-//                    System.out.println("\n==== Atualizando Histórico Médico ====");
-//                    List<HistoricoMedico> listaHistoricosAtualizar = historicoDAO.listarTodos();
-//                    if (listaHistoricosAtualizar.isEmpty()) {
-//                        System.out.println("Nenhum histórico médico cadastrado.");
-//                    } else {
-//                        for (HistoricoMedico h : listaHistoricosAtualizar) {
-//                            System.out.println(h);
-//                        }
-//
-//                        System.out.println("Informe o ID do histórico que deseja atualizar:");
-//                        int idAtualizar = Integer.parseInt(entrada.nextLine());
-//
-//                        System.out.println("Novo ID do animal:");
-//                        int novoIdAnimal = Integer.parseInt(entrada.nextLine());
-//
-//                        System.out.println("Nova data:");
-//                        String novaData = entrada.nextLine();
-//
-//                        System.out.println("Novo tipo (ex: vacina, cirurgia):");
-//                        String novoTipo = entrada.nextLine();
-//
-//                        System.out.println("Nova descrição:");
-//                        String novaDescricao = entrada.nextLine();
-//
-//                        HistoricoMedico historicoAtualizado = new HistoricoMedico(idAtualizar, novoIdAnimal, novaData, novoTipo, novaDescricao);
-//                        historicoDAO.atualizar(idAtualizar, historicoAtualizado);
-//                    }
+                    System.out.println("\n==== Excluir Adocao ====");
+                    List<Adocao> adocoes = AdocaoDAO.listarTodos();
+                    if (adocoes.isEmpty()) {
+                        System.out.println("Nenhuma adocao cadastrada.");
+                    } else {
+                        for (Adocao a : adocoes) {
+                            System.out.println(a);
+                        }
+
+                        System.out.print("Informe o ID da adocao a ser excluida: ");
+                        int idExcluir = entrada.nextInt();
+                        entrada.nextLine();
+
+                        AdocaoDAO.excluir(idExcluir);
+                    }
                     break;
+
+                case 4:
+                    System.out.println("\n==== Atualizar Adocao ====");
+                    List<Adocao> adocoesAtualizar = AdocaoDAO.listarTodos();
+                    if (adocoesAtualizar.isEmpty()) {
+                        System.out.println("Nenhuma adocao cadastrada.");
+                    } else {
+                        for (Adocao a : adocoesAtualizar) {
+                            System.out.println(a);
+                        }
+
+                        System.out.print("Informe o ID da adocao que deseja atualizar: ");
+                        int idAtualizar = entrada.nextInt();
+                        entrada.nextLine();
+
+                        System.out.print("Nova data da adocao: ");
+                        String novaData = entrada.nextLine();
+
+                        System.out.println("Escolha um novo adotante:");
+                        List<Adotante> adotantesAtualizar = AdotanteDAO.listarTodos();
+                        for (Adotante adot : adotantesAtualizar) {
+                            System.out.printf("%-5s | %-20s\n", "ID: " + adot.getIdAdotante(), "Nome: " + adot.getNome());
+                        }
+
+                        Adotante novoAdotante = null;
+                        boolean achouNovoAdotante = false;
+                        do {
+                            System.out.print("Id do novo adotante: ");
+                            int novoIdAdotante = entrada.nextInt();
+                            entrada.nextLine();
+
+                            for (Adotante adot : adotantesAtualizar) {
+                                if (adot.getIdAdotante() == novoIdAdotante) {
+                                    novoAdotante = adot;
+                                    achouNovoAdotante = true;
+                                    break;
+                                }
+                            }
+
+                            if (!achouNovoAdotante) {
+                                System.out.println("Adotante nao encontrado. Tente novamente.");
+                            }
+                        } while (!achouNovoAdotante);
+
+                        String novaOpcaoAnimal = "S";
+                        List<Animal> novaListaAnimais = new ArrayList<>();
+                        List<Animal> todosAnimais = animalDAO.listarTodos();
+
+                        while (!novaOpcaoAnimal.equalsIgnoreCase("N")) {
+                            System.out.println("Animais disponiveis:");
+                            for (Animal a : todosAnimais) {
+                                System.out.printf("%-5s | %-20s\n", "ID: " + a.getId(), "Nome: " + a.getNome());
+                            }
+
+                            System.out.print("Id do animal: ");
+                            int idAnimal = entrada.nextInt();
+                            entrada.nextLine();
+
+                            boolean animalAchado = false;
+                            Iterator<Animal> iterator = todosAnimais.iterator();
+                            while (iterator.hasNext()) {
+                                Animal a = iterator.next();
+                                if (a.getId() == idAnimal) {
+                                    novaListaAnimais.add(a);
+                                    iterator.remove(); // remove para nao permitir repeticao
+                                    animalAchado = true;
+                                    break;
+                                }
+                            }
+
+                            if (!animalAchado) {
+                                System.out.println("Animal nao encontrado. Tente novamente.");
+                            }
+
+                            System.out.print("Deseja adicionar outro animal? (S/N): ");
+                            novaOpcaoAnimal = entrada.nextLine();
+                        }
+
+                        System.out.print("Adocao aprovada (true/false): ");
+                        boolean novoAprovado = entrada.nextBoolean();
+                        entrada.nextLine();
+
+                        Adocao novaAdocaoAtualizada = new Adocao(idAtualizar, novaData, novaListaAnimais, novoAdotante, novoAprovado);
+                        AdocaoDAO.atualizar(idAtualizar, novaAdocaoAtualizada);
+                    }
+                    break;
+
                 case 0:
                     System.out.println("Retornando ao menu principal...");
                     return;
@@ -178,6 +237,4 @@ public class ProgramaMenuAdocao {
         entrada.close();
     }
 
-}//fim da classe ProgramaMenuHistoricoMedico.
-
-
+}//fim da classe ProgramaMenuAdocao
