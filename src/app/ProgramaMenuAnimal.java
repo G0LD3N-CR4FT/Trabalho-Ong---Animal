@@ -24,7 +24,7 @@ public class ProgramaMenuAnimal {
             System.out.println("3. Excluir Animal");
             System.out.println("4. Atualizar Animal");
             System.out.println("5. Gerenciar Histórico Médico");
-            System.out.println("0. Sair");
+            System.out.println("0. Voltar ao Menu Principal");
             System.out.println("Escolha uma opção: ");
             opcao = entrada.nextInt();
             entrada.nextLine(); // consumir o caracter de quebra de linha (ENTER)

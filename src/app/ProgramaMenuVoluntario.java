@@ -19,7 +19,7 @@ public class ProgramaMenuVoluntario{
             System.out.println("2. Listar Voluntário");
             System.out.println("3. Excluir Voluntário");
             System.out.println("4. Atualizar Voluntário");
-            System.out.println("0. Sair");
+            System.out.println("0. Voltar ao Menu Principal");
 
             System.out.println("Escolha uma opcao: ");
             op = teclado.nextInt();

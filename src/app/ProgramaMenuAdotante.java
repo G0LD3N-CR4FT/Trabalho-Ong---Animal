@@ -20,7 +20,7 @@ public class ProgramaMenuAdotante{
                 System.out.println("2. Listar Adotante");
                 System.out.println("3. Excluir Adotante");
                 System.out.println("4. Atualizar Adotante");
-                System.out.println("0. Sair");
+                System.out.println("0. Voltar ao Menu Principal");
 
                 System.out.println("Escolha uma opcao: ");
                 op = teclado.nextInt();
