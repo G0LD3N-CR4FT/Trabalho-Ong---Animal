@@ -66,13 +66,20 @@ public class Adocao {
 
     @Override
     public String toString() {
+
+        String idsAnimais = listaAnimal.stream()
+                .map(animal -> String.valueOf(animal.getId()))
+                .collect(java.util.stream.Collectors.joining(";"));
+
         return String.format("""
             ______________________________________________________________
             ID                | %d
+            ID Adotante       | %d
+            IDs Animais       | %s
             Data de Adoção    | %s
-            Adote com coração | %s
+            Adoção aprovada   | %s
             ______________________________________________________________
-            """, idAdocao, dataAdocao, adotante, aprovado, listaAnimal);
+            """, idAdocao, getAdotante().getIdAdotante(), idsAnimais, dataAdocao, aprovado);
     }
 
     public void listarAnimal(){

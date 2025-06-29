@@ -10,7 +10,7 @@ import java.util.List;
 import java.io.*;
 
 public class AdotanteDAO {
-    private String nomeArquivo = "Adotante.txt";
+    private static String nomeArquivo = "adotante.txt";
 
     public void criar(Adotante novoAdotante){
         BufferedWriter writer=null;
@@ -32,7 +32,7 @@ public class AdotanteDAO {
         }//fim do criar
 
 
-    public List<Adotante> listarTodos() {
+    public static List<Adotante> listarTodos() {
         List<Adotante> listaAdotantes = new ArrayList<>();
         BufferedReader reader = null;
         try {
@@ -127,6 +127,19 @@ public class AdotanteDAO {
             System.out.println("Adotante não encontrado!");
         }
     }//fim do método atualizar
+
+    public static Adotante buscarPorId(int idBuscado) {
+        List<Adotante> listaAdotantes = listarTodos(); // carrega todos os adotantes do arquivo
+
+        for (Adotante adotante : listaAdotantes) {
+            if (adotante.getIdAdotante() == idBuscado) {
+                return adotante; // retorna o primeiro que encontrar com o ID correspondente
+            }
+        }
+
+        return null; // se não encontrar, retorna null
+    }
+
 
 
 }//fim da classe AdotanteDAO

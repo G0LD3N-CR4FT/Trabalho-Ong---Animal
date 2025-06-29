@@ -130,5 +130,16 @@ public class AnimalDAO {
         }
     }//fim do método atualizar
 
+    public static Animal buscarPorId(int idBuscado) {
+        List<Animal> animais = new AnimalDAO().listarTodos(); // você pode usar um método estático, se preferir
+
+        for (Animal animal : animais) {
+            if (animal.getId() == idBuscado) {
+                return animal; // Retorna o animal encontrado
+            }
+        }
+
+        return null; // Retorna null se não encontrar
+    }
 
 }//final da classe AnimalDAO
