@@ -1,5 +1,6 @@
 package dao;
 
+import colors.ConsoleColors;
 import modelo.Adocao;
 import modelo.Adotante;
 import modelo.Animal;
@@ -29,14 +30,14 @@ public class AdocaoDAO {
                     novoAdocao.isAprovado());
             writer.newLine();
 
-            System.out.println("Adoção com Id " + novoAdocao.getIdAdocao() + " inserida com sucesso!!");
+            System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdoção com Id " + novoAdocao.getIdAdocao() + " inserida com sucesso!!" + ConsoleColors.RESET);
         } catch (IOException e) {
-            System.out.println("Erro ao inserir Adoção com Id: " + novoAdocao.getIdAdocao());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao inserir Adoção com Id: " + novoAdocao.getIdAdocao() + " " + ConsoleColors.RESET);
         } finally {
             try {
                 if (writer != null) writer.close();
             } catch (IOException e) {
-                System.out.println("Erro ao fechar o arquivo: " + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo: " + e.getMessage() + " " + ConsoleColors.RESET);
             }
         }
     }
@@ -76,12 +77,12 @@ public class AdocaoDAO {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao ler o arquivo: " + e.getMessage() + " " + ConsoleColors.RESET);
         } finally {
             try {
                 if (reader != null) reader.close();
             } catch (IOException e) {
-                System.out.println("Erro ao fechar o arquivo: " + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo: " + e.getMessage() + " " + ConsoleColors.RESET);
             }
         }
 
@@ -106,12 +107,12 @@ public class AdocaoDAO {
                             adocao.isAprovado());
                     writer.newLine();
                 }
-                System.out.println("Adoção removida com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdoção removida com sucesso!" + ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao reescrever o arquivo: " + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao reescrever o arquivo: " + e.getMessage()+ " " + ConsoleColors.RESET);
             }
         } else {
-            System.out.println("Adoção com ID " + idAdocao + " não encontrada.");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Adoção com ID " + idAdocao + " não encontrada." + ConsoleColors.RESET);
         }
     }
 
@@ -141,12 +142,12 @@ public class AdocaoDAO {
                             adocao.isAprovado());
                     writer.newLine();
                 }
-                System.out.println("Adoção atualizada com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdoção atualizada com sucesso!" + ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao reescrever o arquivo: " + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao reescrever o arquivo: " + e.getMessage() + " " + ConsoleColors.RESET);
             }
         } else {
-            System.out.println("Adoção com ID " + idAdocao + " não encontrada.");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Adoção com ID " + idAdocao + " não encontrada." + ConsoleColors.RESET);
         }
     }
 

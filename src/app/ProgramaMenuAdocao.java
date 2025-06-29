@@ -46,14 +46,14 @@ public class ProgramaMenuAdocao {
                     System.out.println("Escolha um adotante cadastrado: ");
                     List<Adotante> adotantes = AdotanteDAO.listarTodos();
                     for(Adotante a : adotantes){
-                        System.out.printf("%-5s | %-20s\n", "ID: " + a.getIdAdotante(), "Nome: " + a.getNome());
+                        System.out.printf(ConsoleColors.WHITE_BACKGROUND_BRIGHT+ ConsoleColors.BLACK_BOLD_BRIGHT +"%-5s | %-20s\n" + ConsoleColors.RESET, "ID: " + a.getIdAdotante(), "Nome: " + a.getNome());
                     }
 
                     boolean achou = false;
                     Adotante adotante = new Adotante();
 
                     do {
-                        System.out.println("Id do Adotante: ");
+                        System.out.println("\nId do Adotante: ");
                         int idAdotante = entrada.nextInt();
                         entrada.nextLine();
 
@@ -64,7 +64,7 @@ public class ProgramaMenuAdocao {
                             }
                         }
                         if (!achou) {
-                            System.out.println("Adotante nao cadastrado. Tente novamente.");
+                            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Adotante nao cadastrado. Tente novamente." + ConsoleColors.RESET);
                         }
                     } while (!achou);
 
@@ -75,7 +75,7 @@ public class ProgramaMenuAdocao {
                     while(!opcaoAnimal.equalsIgnoreCase("N")) {
                         System.out.println("Animais disponiveis: ");
                         for(Animal a : animais){
-                            System.out.printf("%-5s | %-20s\n", "ID: " + a.getId(), "Nome: " + a.getNome());
+                            System.out.printf(ConsoleColors.WHITE_BACKGROUND_BRIGHT+ ConsoleColors.BLACK_BOLD_BRIGHT +"%-5s | %-20s\n", "ID: " + a.getId(), "Nome: " + a.getNome() + " " + ConsoleColors.RESET);
                         }
 
                         achou = false;
@@ -98,7 +98,7 @@ public class ProgramaMenuAdocao {
                             }
 
                             if (!achou) {
-                                System.out.println("Animal nao cadastrado. Tente novamente.");
+                                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Animal nao cadastrado. Tente novamente." + ConsoleColors.RESET);
                             }
                         } while (!achou);
 
@@ -113,25 +113,25 @@ public class ProgramaMenuAdocao {
                     AdocaoDAO.salvar(novaAdocao);
                     break;
                 case 2:
-                    System.out.println("\n==== Listando Adocoes ====");
+                    System.out.println(ConsoleColors.CYAN_BOLD_BRIGHT + "\n==== Listando Adocoes ====" + ConsoleColors.RESET);
                     List<Adocao> listaAdocoes = AdocaoDAO.listarTodos();
                     if (listaAdocoes.isEmpty()) {
                         System.out.println("Nenhuma adocao cadastrada.");
                     } else {
                         for (Adocao h : listaAdocoes) {
-                            System.out.println(h);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT+ h + ConsoleColors.RESET);
                         }
                     }
                     break;
 
                 case 3:
-                    System.out.println("\n==== Excluir Adocao ====");
+                    System.out.println(ConsoleColors.CYAN_BOLD_BRIGHT + "\n==== Excluir Adocao ====" + ConsoleColors.RESET);
                     List<Adocao> adocoes = AdocaoDAO.listarTodos();
                     if (adocoes.isEmpty()) {
                         System.out.println("Nenhuma adocao cadastrada.");
                     } else {
                         for (Adocao a : adocoes) {
-                            System.out.println(a);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + a + ConsoleColors.RESET);
                         }
 
                         System.out.print("Informe o ID da adocao a ser excluida: ");
@@ -143,13 +143,13 @@ public class ProgramaMenuAdocao {
                     break;
 
                 case 4:
-                    System.out.println("\n==== Atualizar Adocao ====");
+                    System.out.println(ConsoleColors.CYAN_BOLD_BRIGHT + "\n==== Atualizar Adocao ===="  + ConsoleColors.RESET);
                     List<Adocao> adocoesAtualizar = AdocaoDAO.listarTodos();
                     if (adocoesAtualizar.isEmpty()) {
                         System.out.println("Nenhuma adocao cadastrada.");
                     } else {
                         for (Adocao a : adocoesAtualizar) {
-                            System.out.println(a);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + a + ConsoleColors.RESET);
                         }
 
                         System.out.print("Informe o ID da adocao que deseja atualizar: ");
@@ -162,7 +162,7 @@ public class ProgramaMenuAdocao {
                         System.out.println("Escolha um novo adotante:");
                         List<Adotante> adotantesAtualizar = AdotanteDAO.listarTodos();
                         for (Adotante adot : adotantesAtualizar) {
-                            System.out.printf("%-5s | %-20s\n", "ID: " + adot.getIdAdotante(), "Nome: " + adot.getNome());
+                            System.out.printf(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + "%-5s | %-20s\n" + ConsoleColors.RESET, "ID: " + adot.getIdAdotante(), "Nome: " + adot.getNome());
                         }
 
                         Adotante novoAdotante = null;
@@ -181,7 +181,7 @@ public class ProgramaMenuAdocao {
                             }
 
                             if (!achouNovoAdotante) {
-                                System.out.println("Adotante nao encontrado. Tente novamente.");
+                                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Adotante nao encontrado. Tente novamente." + ConsoleColors.RESET);
                             }
                         } while (!achouNovoAdotante);
 
@@ -192,7 +192,7 @@ public class ProgramaMenuAdocao {
                         while (!novaOpcaoAnimal.equalsIgnoreCase("N")) {
                             System.out.println("Animais disponiveis:");
                             for (Animal a : todosAnimais) {
-                                System.out.printf("%-5s | %-20s\n", "ID: " + a.getId(), "Nome: " + a.getNome());
+                                System.out.printf(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + "%-5s | %-20s\n" + ConsoleColors.RESET, "ID: " + a.getId(), "Nome: " + a.getNome());
                             }
 
                             System.out.print("Id do animal: ");
@@ -212,7 +212,7 @@ public class ProgramaMenuAdocao {
                             }
 
                             if (!animalAchado) {
-                                System.out.println("Animal nao encontrado. Tente novamente.");
+                                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Animal nao encontrado. Tente novamente." + ConsoleColors.RESET);
                             }
 
                             System.out.print("Deseja adicionar outro animal? (S/N): ");
