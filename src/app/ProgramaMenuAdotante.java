@@ -30,7 +30,7 @@ public class ProgramaMenuAdotante{
 
                 switch (op){
                     case 1:
-                        System.out.println("\n====== Inserindo Adotante ======");
+                        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "\n====== Inserindo Adotante ======" + ConsoleColors.RESET);
 
                         // ID adotante
                         System.out.println("ID Adotante: ");
@@ -67,19 +67,19 @@ public class ProgramaMenuAdotante{
 
                         break;
                     case 2:
-                        System.out.println("\n====== Listando Adotantes ======");
+                        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "\n====== Listando Adotantes ======" + ConsoleColors.RESET);
                         List<Adotante> listaAdotantes = adotanteDAO.listarTodos();
 
                         if(listaAdotantes.isEmpty()){
                             System.out.println("Nenhum adotante cadastrado");
                         } else {
                             for (Pessoa contato: listaAdotantes){
-                                System.out.println(contato);
+                                System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + contato + ConsoleColors.RESET);
                             }
                         }
                         break;
                     case 3:
-                        System.out.println("\n====== Excluindo Adotante ======");
+                        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "\n====== Excluindo Adotante ======" + ConsoleColors.RESET);
 
                         System.out.println("Informa o ID do adotante a ser excluido: ");
                         int idAdotanteExcluir = teclado.nextInt();
@@ -87,7 +87,7 @@ public class ProgramaMenuAdotante{
                         adotanteDAO.excluir(idAdotanteExcluir);
                         break;
                     case 4:
-                        System.out.println("\n====== Atualizando Adotante ======");
+                        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "\n====== Atualizando Adotante ======" + ConsoleColors.RESET);
 
                         //id adotante para poder atualizar
                         System.out.println("Informa o ID adotante a ser atualizado: ");

@@ -1,4 +1,5 @@
 package dao;
+import colors.ConsoleColors;
 import modelo.Adotante;
 import modelo.Animal;
 
@@ -19,17 +20,17 @@ public class AdotanteDAO {
             writer.write(novoAdotante.getNome()+ "," +novoAdotante.getEmail()+ "," +
                             novoAdotante.getTelefone()+","+novoAdotante.getIdAdotante()+","+novoAdotante.getQuestionario());
             writer.newLine();
-        System.out.println("Adotante " +novoAdotante.getNome()+" inserido com sucesso!!");
+        System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdotante " +novoAdotante.getNome()+" inserido com sucesso!!" + ConsoleColors.RESET);
     }catch (IOException e){
-        System.out.println("Erro ao inserir adotante: " +novoAdotante.getNome());
+        System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao inserir adotante: " +novoAdotante.getNome() + " " + ConsoleColors.RESET);
     }finally {
             try{
                 if(writer!=null) writer.close();
             }catch (IOException e){
-                System.out.println("Erro ao fechar o arquivo: " +e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo: " +e.getMessage()+ " " + ConsoleColors.RESET);
             }
         }
-        }//fim do criar
+    }//fim do criar
 
 
     public static List<Adotante> listarTodos() {
@@ -47,14 +48,14 @@ public class AdotanteDAO {
                 }//fim if
          }
         } catch (FileNotFoundException e) {
-            System.err.println("Arquivo não existe");
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT + "Arquivo não existe" + ConsoleColors.RESET);
         } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo " + nomeArquivo);
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao ler o arquivo " + nomeArquivo + " " + ConsoleColors.RESET);
         } finally {
             try {
                 if (reader != null) reader.close();
             } catch (IOException e) {
-                System.out.println("Erro ao fechar o arquivo!" + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo!" + e.getMessage() + " " + ConsoleColors.RESET);
             }
         }
         return listaAdotantes;
@@ -75,14 +76,14 @@ public class AdotanteDAO {
                             novoAdotante.getQuestionario());
                     writer.newLine();
                 }
-                System.out.println("Adotante removido com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdotante removido com sucesso!" + ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao escrever no arquivo! " + nomeArquivo);
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao escrever no arquivo! " + nomeArquivo + " " + ConsoleColors.RESET);
             } finally {
                 try {
                     if (writer != null) writer.close();
                 } catch (IOException e) {
-                    System.out.println("Erro ao fechar o arquivo! " + e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo! " + e.getMessage() + " " + ConsoleColors.RESET);
                 }
             }
         } else {
@@ -111,16 +112,16 @@ public class AdotanteDAO {
                             novoAdotante.getQuestionario());
                     writer.newLine();
                 }
-                System.out.println("Adotante atualizado com exito!!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAdotante atualizado com exito!!" + ConsoleColors.RESET);
             }catch (IOException e){
-                System.out.println("Erro ao atualizar cadastro de adotante!"+e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao atualizar cadastro de adotante!"+e.getMessage() +" "+ ConsoleColors.RESET);
             }finally {
                 try{
                     if (writer != null) {
                         writer.close();
                     }
                 }catch (IOException e){
-                    System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo!"+e.getMessage() + " " + ConsoleColors.RESET);
                 }
             }
         }else{
