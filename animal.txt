@@ -3,4 +3,3 @@
 12,KAT,GATO,SIAMÊS ,4,F,FOFA E FOLGADA.,https://www.petlove.com.br/images/breeds/192825/profile/original/siames-p.jpg?1532626975,,,N
 12,as,as,as,12,F,d,we,,,N
 1,PAulo,LOL,PAto,35,F,cabelo,OwO,1200/03/-50,ALi,S
-2,paulo,RAtatuie,Pinta Manchada,234,M,Morto,C = 8,,,S

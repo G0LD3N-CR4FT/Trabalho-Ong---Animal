@@ -61,9 +61,9 @@ public class AnimalDAO {
 
     }//fim método listar todos
 
-    public void excluir(String nomeExcluir) {
+    public void excluir(int idExcluir) {
         List<Animal> animais = listarTodos();
-        boolean removido = animais.removeIf(animal -> animal.getNome().equalsIgnoreCase(nomeExcluir));
+        boolean removido = animais.removeIf(animal -> animal.getId() == (idExcluir));
 
         if (removido) {
             BufferedWriter writer = null;
@@ -92,12 +92,12 @@ public class AnimalDAO {
         }
     }//Fim do método excluir
 
-    public void atualizar(String nomeAtualizar, Animal animalAtualizado) {
+    public void atualizar(int idAtualizar, Animal animalAtualizado) {
         List<Animal> animais = listarTodos(); //carrega lista dos animais cadastrados
         boolean atualizou = false; //pra poder saber se houve algum animal atualizado
 
         for (int i = 0; i < animais.size(); i++) { //percorre os animais //animais.size já sabe quantos elementos tem na lista
-            if (animais.get(i).getNome().equalsIgnoreCase(nomeAtualizar)) {
+            if (animais.get(i).getId() == idAtualizar) {
                 animais.set(i, animalAtualizado);
                 atualizou = true;
                 break;
@@ -114,7 +114,7 @@ public class AnimalDAO {
                             novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
                     writer.newLine();
                 }
-                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAnimal atulizado com exito!!" + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAnimal atualizado com exito!!" + ConsoleColors.RESET);
             }catch (IOException e){
                 System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao atualizar cadastro de animal!"+e.getMessage() + " " + ConsoleColors.RESET);
             }finally {

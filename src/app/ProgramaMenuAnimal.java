@@ -24,7 +24,6 @@ public class ProgramaMenuAnimal {
             System.out.println("2. Listar Animal");
             System.out.println("3. Excluir Animal");
             System.out.println("4. Atualizar Animal");
-            System.out.println("5. Gerenciar Histórico Médico");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.println(ConsoleColors.GREEN_BOLD + "===========================" + ConsoleColors.RESET);
             System.out.println("Escolha uma opção: ");
@@ -103,15 +102,15 @@ public class ProgramaMenuAnimal {
 
                 case 3:
                     System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Excluindo Animal ====" + ConsoleColors.RESET);
-                    System.out.println("Informe o nome do animal a ser excluido:");
-                    String nomeExcluir = entrada.nextLine();
-                    animalDAO.excluir(nomeExcluir);
+                    System.out.println("Informe o Id do animal a ser excluido:");
+                    int idExcluir = entrada.nextInt();
+                    animalDAO.excluir(idExcluir);
                     break;
 
                 case 4: {
                     System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Atualizando Animal ====" + ConsoleColors.RESET);
-                    System.out.println("Informe o nome do animal a ser atualizado:");
-                    String nomeAtualizar = entrada.nextLine();
+                    System.out.println("Informe o Id do animal a ser atualizado:");
+                    int idAtualizar = entrada.nextInt();
 
                     System.out.println("Novo id :");
                     int novoIdAnimal = entrada.nextInt();
@@ -163,7 +162,7 @@ public class ProgramaMenuAnimal {
                     }
                     Animal animalAtualizado = new Animal(novoIdAnimal, novoNomeAnimal, novoEspecieAnimal, novoRacaAnimal, novoIdadeAnimal, novoSexoAnimal,
                             novoStatusAnimal, novoFotoAnimal, novoResgateDate, novoResgateLocal,novoAdoteCoracao);
-                    animalDAO.atualizar(nomeAtualizar, animalAtualizado);
+                    animalDAO.atualizar(idAtualizar, animalAtualizado);
                     break;
                 }
                 case 0:
