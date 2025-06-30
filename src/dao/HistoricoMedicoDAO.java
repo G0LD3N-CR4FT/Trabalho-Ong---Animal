@@ -1,5 +1,6 @@
 package dao;
 
+import colors.ConsoleColors;
 import modelo.HistoricoMedico;
 
 import java.io.*;
@@ -18,9 +19,9 @@ public class HistoricoMedicoDAO {
                     novoHistoricoMedico.getData()+","+novoHistoricoMedico.getTipo()+","+
                     novoHistoricoMedico.getDescricao());
             historicoMedico.newLine();
-            System.out.println("Histórico médico inserido com sucesso!");
+            System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Histórico médico inserido com sucesso!"+ ConsoleColors.RESET);
         }catch (IOException e){
-            System.out.println("Erro ao salvar histórico médico"+e.getMessage());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao salvar histórico médico"+e.getMessage()+ ConsoleColors.RESET);
         }finally { //fechar o arquivo
             try {
                 historicoMedico.close();
@@ -52,9 +53,9 @@ public class HistoricoMedicoDAO {
             }
             reader.close(); //fecha o BufferedReader depois da leitura para liberar o arquivo do sistema operacional.
         }catch (FileNotFoundException e){
-            System.out.println("Arquivo de histórico médico ainda não existe!");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Arquivo de histórico médico ainda não existe!"+ ConsoleColors.RESET);
         }catch (IOException e){
-            System.out.println("Erro ao abrir o arquivo!"+e.getMessage());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao abrir o arquivo!"+e.getMessage()+ ConsoleColors.RESET);
         }
         return historicos;
     }//fim do método listarTodos
@@ -82,12 +83,12 @@ public class HistoricoMedicoDAO {
                     writer.newLine();
                 }
                 writer.close();
-                System.out.println("Histórico médico atualizado com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Histórico médico atualizado com sucesso!"+ ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao atualizar histórico médico: " + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao atualizar histórico médico: " + e.getMessage()+ ConsoleColors.RESET);
             }
         } else {
-            System.out.println("Histórico com ID " + idHistoricoAtualizar + " não encontrado!");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Histórico com ID " + idHistoricoAtualizar + " não encontrado!"+ ConsoleColors.RESET);
         }
     }//Fim do método para Atualizar Histórico médico
 
@@ -104,12 +105,12 @@ public class HistoricoMedicoDAO {
                     writer.newLine(); //serve pra escrever uma linha de separação dos contatos
                 }
                 writer.close(); //fecha arquivo de escrita
-                System.out.println("Histórico médico removido com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Histórico médico removido com sucesso!"+ ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao exlucir aquivo!");
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao exlucir aquivo!"+ ConsoleColors.RESET);
             }
         }else{
-            System.out.println("Histórico médico com id"+idHistorico+"não encontrado!");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Histórico médico com id"+idHistorico+"não encontrado!"+ ConsoleColors.RESET);
         }
 
     }//fim do método excluir

@@ -1,5 +1,6 @@
 package dao;
 
+import colors.ConsoleColors;
 import modelo.Adotante;
 import modelo.Voluntario;
 
@@ -17,14 +18,14 @@ public class VoluntarioDAO{
             writer.write(novoVoluntario.getNome()+ "," +novoVoluntario.getEmail()+ "," +
                     novoVoluntario.getTelefone()+","+novoVoluntario.idVoluntario+","+novoVoluntario.disponibilidade+","+novoVoluntario.habilidades);
             writer.newLine();
-            System.out.println("Voluntário " +novoVoluntario.getNome()+" inserido com sucesso!!");
+            System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Voluntário " +novoVoluntario.getNome()+" inserido com sucesso!!"+ ConsoleColors.RESET);
         }catch (IOException e){
-            System.out.println("Erro ao inserir voluntário: " +novoVoluntario.getNome());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao inserir voluntário: " +novoVoluntario.getNome()+ ConsoleColors.RESET);
         }finally {
             try{
                 if(writer!=null) writer.close();
             }catch (IOException e){
-                System.out.println("Erro ao fechar o arquivo: " +e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao fechar o arquivo: " +e.getMessage()+ ConsoleColors.RESET);
             }
         }
     }//fim do método criar
@@ -45,14 +46,14 @@ public class VoluntarioDAO{
                 }//fim if
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Arquivo não existe");
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT +"Arquivo não existe"+ ConsoleColors.RESET);
         } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo " + nomeArquivo);
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao ler o arquivo " + nomeArquivo+ ConsoleColors.RESET);
         } finally {
             try {
                 if (reader != null) reader.close();
             } catch (IOException e) {
-                System.out.println("Erro ao fechar o arquivo!" + e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao fechar o arquivo!" + e.getMessage()+ ConsoleColors.RESET);
             }
         }
         return listaVoluntario;
@@ -74,18 +75,18 @@ public class VoluntarioDAO{
                             novoVoluntario.idVoluntario+","+novoVoluntario.disponibilidade+","+novoVoluntario.habilidades);
                     writer.newLine();
                 }
-                System.out.println("Voluntário removido com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Voluntário removido com sucesso!"+ ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao escrever no arquivo! " + nomeArquivo);
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao escrever no arquivo! " + nomeArquivo + ConsoleColors.RESET);
             } finally {
                 try {
                     if (writer != null) writer.close();
                 } catch (IOException e) {
-                    System.out.println("Erro ao fechar o arquivo! " + e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao fechar o arquivo! " + e.getMessage()+ ConsoleColors.RESET);
                 }
             }
         } else {
-            System.out.println("Voluntário não existe!");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Voluntário não existe!"+ ConsoleColors.RESET);
         }
     }//fim do Excluir
 
@@ -111,20 +112,20 @@ public class VoluntarioDAO{
                             novoVoluntario.idVoluntario+","+novoVoluntario.disponibilidade+","+novoVoluntario.habilidades);
                     writer.newLine();
                 }
-                System.out.println("Voluntário atualizado com exito!!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT +"Voluntário atualizado com exito!!"+ ConsoleColors.RESET);
             }catch (IOException e){
-                System.out.println("Erro ao atualizar cadastro de voluntário!"+e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao atualizar cadastro de voluntário!"+e.getMessage()+ ConsoleColors.RESET);
             }finally {
                 try{
                     if (writer != null) {
                         writer.close();
                     }
                 }catch (IOException e){
-                    System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Erro ao fechar o arquivo!"+e.getMessage()+ ConsoleColors.RESET);
                 }
             }
         }else{
-            System.out.println("Voluntário não encontrado!");
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT +"Voluntário não encontrado!"+ ConsoleColors.RESET);
         }
     }//fim do método atualizar
 

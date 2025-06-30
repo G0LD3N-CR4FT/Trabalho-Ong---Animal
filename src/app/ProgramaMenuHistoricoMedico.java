@@ -31,6 +31,7 @@ public class ProgramaMenuHistoricoMedico{
 
             switch (opcaoHistorico) {
                 case 1:
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\n==== Inserindo Histórico Médico ===="+ ConsoleColors.RESET);
                     System.out.println("Id do histórico médico: ");
                     int idHistorico = entrada.nextInt();
                     entrada.nextLine(); //pular line
@@ -60,18 +61,18 @@ public class ProgramaMenuHistoricoMedico{
                     historicoDAO.salvar(novoHistorico);
                     break;
                 case 2:
-                    System.out.println("\n==== Listando Histórico Médico ====");
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\n==== Listando Histórico Médico ===="+ ConsoleColors.RESET);
                     List<HistoricoMedico> listaHistoricos = historicoDAO.listarTodos();
                     if (listaHistoricos.isEmpty()) {
                         System.out.println("Nenhum histórico médico cadastrado.");
                     } else {
                         for (HistoricoMedico h : listaHistoricos) {
-                            System.out.println(h);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + h + ConsoleColors.RESET);
                         }
                     }
                     break;
                 case 3:
-                    System.out.println("\n==== Excluindo Histórico Médico ====");
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\n==== Excluindo Histórico Médico ===="+ ConsoleColors.RESET);
                     List<HistoricoMedico> listaHistorico = historicoDAO.listarTodos();
                     if (listaHistorico.isEmpty()) {
                         System.out.println("Nenhum histórico médico cadastrado.");
@@ -85,7 +86,7 @@ public class ProgramaMenuHistoricoMedico{
                     historicoDAO.excluir(idExcluir);
                     break;
                 case 4:
-                    System.out.println("\n==== Atualizando Histórico Médico ====");
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "\n==== Atualizando Histórico Médico ====");
                     List<HistoricoMedico> listaHistoricosAtualizar = historicoDAO.listarTodos();
                     if (listaHistoricosAtualizar.isEmpty()) {
                         System.out.println("Nenhum histórico médico cadastrado.");

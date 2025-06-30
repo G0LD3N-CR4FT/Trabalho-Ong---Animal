@@ -15,13 +15,13 @@ public class ProgramaMenuVoluntario{
         int op;
 
         do {
-            System.out.println(ConsoleColors.ORANGE_BOLD + "\n========= MENU VOLUNTÁRIO =========" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.PURPLE_BOLD + "\n========= MENU VOLUNTÁRIO =========" + ConsoleColors.RESET);
             System.out.println("1. Inserir Voluntário");
             System.out.println("2. Listar Voluntário");
             System.out.println("3. Excluir Voluntário");
             System.out.println("4. Atualizar Voluntário");
             System.out.println("0. Voltar ao Menu Principal");
-            System.out.println(ConsoleColors.ORANGE_BOLD + "===================================" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.PURPLE_BOLD + "===================================" + ConsoleColors.RESET);
             System.out.println("Escolha uma opcao: ");
             op = teclado.nextInt();
 
@@ -29,7 +29,7 @@ public class ProgramaMenuVoluntario{
 
             switch (op){
                 case 1:
-                    System.out.println("\n====== Inserindo Voluntário ======");
+                    System.out.println(ConsoleColors.PURPLE_BOLD_BRIGHT +"\n====== Inserindo Voluntário ======"+ ConsoleColors.RESET);
 
                     // ID voluntário
                     System.out.println("ID Voluntário: ");
@@ -71,19 +71,19 @@ public class ProgramaMenuVoluntario{
 
                     break;
                 case 2:
-                    System.out.println("\n====== Listando Voluntários ======");
+                    System.out.println(ConsoleColors.PURPLE_BOLD_BRIGHT +"\n====== Listando Voluntários ======"+ ConsoleColors.RESET);
                     List<Voluntario> listaVoluntario = voluntarioDAO.listarTodos();
 
                     if(listaVoluntario.isEmpty()){
                         System.out.println("Nenhum voluntário cadastrado");
                     } else {
                         for (Pessoa contato: listaVoluntario){
-                            System.out.println(contato);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + contato + ConsoleColors.RESET);
                         }
                     }
                     break;
                 case 3:
-                    System.out.println("\n====== Excluindo Voluntários ======");
+                    System.out.println(ConsoleColors.PURPLE_BOLD_BRIGHT +"\n====== Excluindo Voluntários ======"+ ConsoleColors.RESET);
 
                     System.out.println("Informa o ID do voluntário a ser excluido: ");
                     int idVoluntarioExcluir = teclado.nextInt();
@@ -91,7 +91,7 @@ public class ProgramaMenuVoluntario{
                     voluntarioDAO.excluir(idVoluntarioExcluir);
                     break;
                 case 4:
-                    System.out.println("\n====== Atualizando Voluntário ======");
+                    System.out.println(ConsoleColors.PURPLE_BOLD_BRIGHT +"\n====== Atualizando Voluntário ======"+ ConsoleColors.RESET);
 
                     //id Voluntário para poder atualizar
                     System.out.println("Informa o ID Voluntário a ser atualizado: ");
