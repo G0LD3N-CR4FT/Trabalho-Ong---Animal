@@ -1,5 +1,6 @@
 package dao;
 
+import colors.ConsoleColors;
 import modelo.Animal;
 
 import java.io.*;
@@ -18,9 +19,9 @@ public class AnimalDAO {
                     +novoAnimal.getSexo()+","+novoAnimal.getStatus()+","+novoAnimal.getFoto()+","+
                     novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
             animal.newLine();
-            System.out.println("Animal " +novoAnimal.getNome()+" inserido com sucesso!!");
+            System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAnimal " +novoAnimal.getNome()+" inserido com sucesso!!" + ConsoleColors.RESET);
         }catch (IOException e){
-            System.out.println("Erro ao inserir o animal: " +novoAnimal.getNome());
+            System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao inserir o animal: " +novoAnimal.getNome() +" "+ ConsoleColors.RESET);
         }finally {
             try {
                 if(animal!=null) animal.close();
@@ -45,14 +46,14 @@ public class AnimalDAO {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Arquivo não existe");
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT + "Arquivo não existe" + ConsoleColors.RESET);
         } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo "+nomeArquivo);
+            System.err.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao ler o arquivo "+nomeArquivo+ " "+ ConsoleColors.RESET);
         }finally {
             try{
                 if(reader != null) reader.close();
             }catch (IOException e){
-                System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo!"+e.getMessage() + " " + ConsoleColors.RESET);
             }
         }
         return animais;
@@ -76,14 +77,14 @@ public class AnimalDAO {
                             novoAnimal.getResgateDate() + "," + novoAnimal.getResgateLocal() + "," + novoAnimal.getAdoteCoracao());
                     writer.newLine();
                 }
-                System.out.println("Animal removido com sucesso!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAnimal removido com sucesso!" + ConsoleColors.RESET);
             } catch (IOException e) {
-                System.out.println("Erro ao escrever no arquivo! " + nomeArquivo);
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao escrever no arquivo! " + nomeArquivo + " " + ConsoleColors.RESET);
             } finally {
                 try {
                     if (writer != null) writer.close();
                 } catch (IOException e) {
-                    System.out.println("Erro ao fechar o arquivo! " + e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo! " + e.getMessage() + " " + ConsoleColors.RESET);
                 }
             }
         } else {
@@ -113,16 +114,16 @@ public class AnimalDAO {
                             novoAnimal.getResgateDate()+","+novoAnimal.getResgateLocal()+","+novoAnimal.getAdoteCoracao());
                     writer.newLine();
                 }
-                System.out.println("Animal atulizado com exito!!");
+                System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\nAnimal atulizado com exito!!" + ConsoleColors.RESET);
             }catch (IOException e){
-                System.out.println("Erro ao atualizar cadastro de animal!"+e.getMessage());
+                System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao atualizar cadastro de animal!"+e.getMessage() + " " + ConsoleColors.RESET);
             }finally {
                 try{
                     if (writer != null) {
                         writer.close();
                     }
                 }catch (IOException e){
-                    System.out.println("Erro ao fechar o arquivo!"+e.getMessage());
+                    System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Erro ao fechar o arquivo!"+e.getMessage()+ " " + ConsoleColors.RESET);
                 }
             }
         }else{

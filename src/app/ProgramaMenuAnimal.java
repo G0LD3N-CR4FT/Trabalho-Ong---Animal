@@ -33,7 +33,7 @@ public class ProgramaMenuAnimal {
 
             switch (opcao){
                 case 1:
-                    System.out.println("\n==== Inserindo Animal ====");
+                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Inserindo Animal ====" + ConsoleColors.RESET);
 
                     System.out.println("Id :");
                     int idAnimal = entrada.nextInt();
@@ -80,7 +80,7 @@ public class ProgramaMenuAnimal {
 
                     // Garantir que a resposta seja apenas 'S' ou 'N'
                     if (adoteCoracao != 'S' && adoteCoracao != 'N') {
-                        System.out.println("Opção inválida, Definir como 'N' por padrão.");
+                        System.out.println(ConsoleColors.RED_BOLD_BRIGHT + "Opção inválida, Definir como 'N' por padrão." + ConsoleColors.RESET);
                         adoteCoracao = 'N';
                     }
 
@@ -90,26 +90,26 @@ public class ProgramaMenuAnimal {
                     break;
 
                 case 2:
-                    System.out.println("\n==== Listando Animais ====");
+                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Listando Animais ====" + ConsoleColors.RESET);
                     List<Animal> listaAnimais = animalDAO.listarTodos();
                     if(listaAnimais.isEmpty()){
                         System.out.println("Nenhum Animal cadastrado.");
                     } else {
                         for (Animal animal : listaAnimais){
-                            System.out.println(animal);
+                            System.out.println(ConsoleColors.WHITE_BACKGROUND_BRIGHT + ConsoleColors.BLACK_BOLD_BRIGHT + animal + ConsoleColors.RESET);
                         }
                     }
                     break;
 
                 case 3:
-                    System.out.println("\n==== Excluindo Animal ====");
+                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Excluindo Animal ====" + ConsoleColors.RESET);
                     System.out.println("Informe o nome do animal a ser excluido:");
                     String nomeExcluir = entrada.nextLine();
                     animalDAO.excluir(nomeExcluir);
                     break;
 
                 case 4: {
-                    System.out.println("\n==== Atualizando Animal ====");
+                    System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT + "\n==== Atualizando Animal ====" + ConsoleColors.RESET);
                     System.out.println("Informe o nome do animal a ser atualizado:");
                     String nomeAtualizar = entrada.nextLine();
 
