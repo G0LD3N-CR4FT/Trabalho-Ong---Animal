@@ -22,7 +22,7 @@ public class ProgramaMenuAdocao {
         AnimalDAO animalDAO = new AnimalDAO();
 
         do {
-            System.out.println(ConsoleColors.CYAN_BOLD + "\n====== MENU ADOCACAO ======" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN_BOLD + "\n====== MENU ADOCAO ======" + ConsoleColors.RESET);
             System.out.println("1. Inserir Adocao");
             System.out.println("2. Listar Adocoes");
             System.out.println("3. Excluir Adocao");
